@@ -54,6 +54,11 @@ msgid "Cost"
 msgstr ""
 
 #. module: product_supplierinfo_for_customer
+#: selection:product.pricelist.item,base:0
+msgid "Cost Price Tax Included"
+msgstr ""
+
+#. module: product_supplierinfo_for_customer
 #: model:ir.model.fields,field_description:product_supplierinfo_for_customer.field_product_customerinfo__create_uid
 msgid "Created by"
 msgstr ""
@@ -183,6 +188,12 @@ msgstr ""
 #. module: product_supplierinfo_for_customer
 #: selection:product.pricelist.item,base:0
 #, fuzzy
+msgid "Other Price"
+msgstr "Liste de prix"
+
+#. module: product_supplierinfo_for_customer
+#: selection:product.pricelist.item,base:0
+#, fuzzy
 msgid "Other Pricelist"
 msgstr "Liste de prix"
 
@@ -209,6 +220,11 @@ msgstr "Liste de prix"
 #, fuzzy
 msgid "Pricelist Item"
 msgstr "Liste de prix"
+
+#. module: product_supplierinfo_for_customer
+#: selection:product.pricelist.item,base:0
+msgid "Prices based on supplier info"
+msgstr ""
 
 #. module: product_supplierinfo_for_customer
 #: model:ir.model,name:product_supplierinfo_for_customer.model_product_product
