@@ -2,7 +2,10 @@
 # Copyright 2018 Tecnativa - David Vidal
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
+from collections import defaultdict
+
 from odoo import _, api, fields, models
+from odoo.osv import expression
 from odoo.exceptions import ValidationError
 
 
@@ -25,6 +28,11 @@ class ProductPricelistPrint(models.TransientModel):
     categ_ids = fields.Many2many(
         comodel_name='product.category',
         string='Categories',
+    )
+    show_only_defined_products = fields.Boolean(
+        string='Show the products defined on pricelist',
+        help='Check this field to print only the products defined in the pricelist. '
+             'The entries in the list referring to all products will not be displayed.',
     )
     show_variants = fields.Boolean()
     product_tmpl_ids = fields.Many2many(
@@ -52,6 +60,7 @@ class ProductPricelistPrint(models.TransientModel):
         help="If you enter an X number here, then, for each selected customer,"
              " the last X ordered products will be obtained for the report."
     )
+    summary = fields.Text(string="Summary")
 
     @api.multi
     @api.depends('partner_ids')
@@ -207,7 +216,8 @@ class ProductPricelistPrint(models.TransientModel):
         orders = partner.sale_order_ids.filtered(
             lambda r: r.state not in ['draft', 'sent', 'cancel'])
         orders = orders.sorted(key=lambda r: r.confirmation_date, reverse=True)
-        products = orders.mapped('order_line').mapped('product_id')
+        products = orders.mapped(
+            'order_line').mapped('product_id').filtered('active')
         return products[:self.last_ordered_products]
 
     @api.multi
@@ -217,3 +227,95 @@ class ProductPricelistPrint(models.TransientModel):
         if not pricelist and self.partner_count == 1:
             pricelist = self.partner_ids[0].property_product_pricelist
         return pricelist
+
+    def get_products_domain(self):
+        domain = [
+            ('sale_ok', '=', True)
+        ]
+        if self.show_only_defined_products:
+            aux_domain = []
+            items_dic = {"categ_ids": [], "product_ids": [], "variant_ids": []}
+            for item in self.pricelist_id.item_ids:
+                if item.applied_on == "0_product_variant":
+                    items_dic["variant_ids"].append(item.product_id.id)
+                if item.applied_on == "1_product":
+                    items_dic["product_ids"].append(item.product_tmpl_id.id)
+                if item.applied_on == "2_product_category" and item.categ_id.parent_id:
+                    items_dic["categ_ids"].append(item.categ_id.id)
+            if items_dic["categ_ids"]:
+                aux_domain = expression.OR([
+                    aux_domain,
+                    [('categ_id', 'in', items_dic["categ_ids"])]
+                ])
+            if items_dic["product_ids"]:
+                if self.show_variants:
+                    aux_domain = expression.OR([
+                        aux_domain,
+                        [('product_tmpl_id', 'in', items_dic["product_ids"])]
+                    ])
+                else:
+                    aux_domain = expression.OR([
+                        aux_domain,
+                        [('id', 'in', items_dic["product_ids"])]
+                    ])
+            if items_dic["variant_ids"]:
+                if self.show_variants:
+                    aux_domain = expression.OR([
+                        aux_domain,
+                        [('id', 'in', items_dic["variant_ids"])]
+                    ])
+                else:
+                    aux_domain = expression.OR([
+                        aux_domain,
+                        [('product_variant_ids', 'in', items_dic["variant_ids"])]
+                    ])
+            domain = expression.AND([domain, aux_domain])
+        if self.categ_ids:
+            domain = expression.AND([domain, [('categ_id', 'in', self.categ_ids.ids)]])
+        return domain
+
+    def get_products_to_print(self):
+        self.ensure_one()
+        if self.last_ordered_products:
+            products = self.get_last_ordered_products_to_print()
+        else:
+            if self.show_variants:
+                products = self.product_ids or self.product_tmpl_ids.mapped(
+                    'product_variant_ids')
+            else:
+                products = self.product_tmpl_ids
+        if not products:
+            products = products.search(self.get_products_domain())
+        return products
+
+    def get_group_key(self, product):
+        return product.categ_id.name
+
+    def get_sorted_products(self, products):
+        if self.order_field:
+            # Using "or ''" to avoid issues with None type
+            return products.sorted(
+                lambda x: getattr(x, self.order_field) or '')
+        return products
+
+    def get_groups_to_print(self):
+        self.ensure_one()
+        products = self.get_products_to_print()
+        if not products:
+            return []
+        group_dict = defaultdict(lambda: products.browse())
+        for product in products:
+            key = self.get_group_key(product)
+            group_dict[key] |= product
+        group_list = []
+        for key in sorted(group_dict.keys()):
+            group_list.append({
+                'group_name': key,
+                'products': self.get_sorted_products(group_dict[key])
+            })
+        return group_list
+
+    def export_xlsx(self):
+        self.ensure_one()
+        return self.env.ref(
+            'product_pricelist_direct_print.product_pricelist_xlsx').report_action(self)

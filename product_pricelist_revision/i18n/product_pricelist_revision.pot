@@ -54,6 +54,11 @@ msgid "Created on"
 msgstr ""
 
 #. module: product_pricelist_revision
+#: model_terms:ir.ui.view,arch_db:product_pricelist_revision.product_pricelist_item_view_search
+msgid "Current"
+msgstr ""
+
+#. module: product_pricelist_revision
 #: model:ir.model.fields,field_description:product_pricelist_revision.field_product_pricelist_item_duplicate_wizard__date_end
 msgid "Date End"
 msgstr ""
@@ -111,6 +116,11 @@ msgstr ""
 #. module: product_pricelist_revision
 #: model:ir.model.fields,field_description:product_pricelist_revision.field_product_pricelist_item__name
 msgid "Name"
+msgstr ""
+
+#. module: product_pricelist_revision
+#: model_terms:ir.ui.view,arch_db:product_pricelist_revision.product_pricelist_item_revision_tree_view
+msgid "Percent"
 msgstr ""
 
 #. module: product_pricelist_revision
