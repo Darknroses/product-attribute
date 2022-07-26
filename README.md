@@ -24,7 +24,7 @@ addon | version | maintainers | summary
 [packaging_uom](packaging_uom/) | 13.0.1.0.4 | [![rousseldenis](https://github.com/rousseldenis.png?size=30px)](https://github.com/rousseldenis) | Use uom in package
 [product_abc_classification](product_abc_classification/) | 13.0.3.0.0 | [![MiquelRForgeFlow](https://github.com/MiquelRForgeFlow.png?size=30px)](https://github.com/MiquelRForgeFlow) | Includes ABC classification for inventory management
 [product_abc_classification_sale](product_abc_classification_sale/) | 13.0.1.0.1 | [![CarlosRoca13](https://github.com/CarlosRoca13.png?size=30px)](https://github.com/CarlosRoca13) | Includes ABC classification for inventory management
-[product_assortment](product_assortment/) | 13.0.2.1.0 |  | Adds the ability to manage products assortment
+[product_assortment](product_assortment/) | 13.0.2.2.0 |  | Adds the ability to manage products assortment
 [product_attribute_archive](product_attribute_archive/) | 13.0.1.0.1 |  | Add an active field on product attributes
 [product_attribute_value_menu](product_attribute_value_menu/) | 13.0.1.1.0 |  | Add a menu item containing the Attribute Values
 [product_barcode_required](product_barcode_required/) | 13.0.1.0.2 |  | Make product barcode required when enabled
@@ -52,19 +52,20 @@ addon | version | maintainers | summary
 [product_pricelist_assortment](product_pricelist_assortment/) | 13.0.1.0.2 |  | Product assortment and pricelist
 [product_pricelist_button_box](product_pricelist_button_box/) | 13.0.1.0.1 | [![rousseldenis](https://github.com/rousseldenis.png?size=30px)](https://github.com/rousseldenis) | Allows to define a button_box section on pricelist form
 [product_pricelist_by_contact](product_pricelist_by_contact/) | 13.0.1.0.0 |  | Product Pricelist Per Contact
-[product_pricelist_direct_print](product_pricelist_direct_print/) | 13.0.3.4.1 |  | Print price list from menu option, product templates, products variants or price lists
+[product_pricelist_direct_print](product_pricelist_direct_print/) | 13.0.3.4.2 |  | Print price list from menu option, product templates, products variants or price lists
 [product_pricelist_direct_print_company_group](product_pricelist_direct_print_company_group/) | 13.0.1.0.0 |  | Print Pricelist items using the company group model
 [product_pricelist_direct_print_website_sale](product_pricelist_direct_print_website_sale/) | 13.0.2.0.0 | [![CarlosRoca13](https://github.com/CarlosRoca13.png?size=30px)](https://github.com/CarlosRoca13) | Extend Product Pricelist Direct Print for filter by public categories
 [product_pricelist_revision](product_pricelist_revision/) | 13.0.1.2.0 |  | Product Pricelist Revision
+[product_pricelist_simulation](product_pricelist_simulation/) | 13.0.1.0.0 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Simulate the product price for all pricelists
 [product_pricelist_supplierinfo](product_pricelist_supplierinfo/) | 13.0.1.0.5 |  | Allows to create priceslists based on supplier info
 [product_product_template_navigation](product_product_template_navigation/) | 13.0.1.0.1 |  | Adds a button in product to view the template
 [product_restricted_type](product_restricted_type/) | 13.0.1.1.0 |  | Product Restricted Type
 [product_secondary_unit](product_secondary_unit/) | 13.0.2.2.1 | [![sergio-teruel](https://github.com/sergio-teruel.png?size=30px)](https://github.com/sergio-teruel) | Set a secondary unit per product
-[product_sequence](product_sequence/) | 13.0.2.0.1 |  | Product Sequence
+[product_sequence](product_sequence/) | 13.0.2.0.2 |  | Product Sequence
 [product_state](product_state/) | 13.0.1.0.1 | [![emagdalenaC2i](https://github.com/emagdalenaC2i.png?size=30px)](https://github.com/emagdalenaC2i) | Module introducing a state field on product template
 [product_stock_state](product_stock_state/) | 13.0.1.0.0 | [![sebastienbeau](https://github.com/sebastienbeau.png?size=30px)](https://github.com/sebastienbeau) [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) [![kevinkhao](https://github.com/kevinkhao.png?size=30px)](https://github.com/kevinkhao) | Compute the state of a product's stockthe stock level and sale_ok field
 [product_supplierinfo_archive](product_supplierinfo_archive/) | 13.0.1.0.0 | [![GuillemCForgeFlow](https://github.com/GuillemCForgeFlow.png?size=30px)](https://github.com/GuillemCForgeFlow) [![AlvaroTForgeFlow](https://github.com/AlvaroTForgeFlow.png?size=30px)](https://github.com/AlvaroTForgeFlow) [![OriolVForgeFlow](https://github.com/OriolVForgeFlow.png?size=30px)](https://github.com/OriolVForgeFlow) | Add the active field to the product supplier info
-[product_supplierinfo_for_customer](product_supplierinfo_for_customer/) | 13.0.1.1.1 |  | Allows to define prices for customers in the products
+[product_supplierinfo_for_customer](product_supplierinfo_for_customer/) | 13.0.1.2.0 |  | Allows to define prices for customers in the products
 [product_supplierinfo_revision](product_supplierinfo_revision/) | 13.0.1.0.0 |  | Product Supplierinfo Revision
 [product_template_tags](product_template_tags/) | 13.0.2.1.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | This addon allow to add tags on products
 [product_template_tags_code](product_template_tags_code/) | 13.0.1.0.0 |  | This addon allow to add code on products tags
