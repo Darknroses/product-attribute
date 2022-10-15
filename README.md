@@ -1,6 +1,7 @@
 
 [![Runboat](https://img.shields.io/badge/runboat-Try%20me-875A7B.png)](https://runboat.odoo-community.org/builds?repo=OCA/product-attribute&target_branch=14.0)
-[![Build Status](https://travis-ci.com/OCA/product-attribute.svg?branch=14.0)](https://travis-ci.com/OCA/product-attribute)
+[![Pre-commit Status](https://github.com/OCA/product-attribute/actions/workflows/pre-commit.yml/badge.svg?branch=14.0)](https://github.com/OCA/product-attribute/actions/workflows/pre-commit.yml?query=branch%3A14.0)
+[![Build Status](https://github.com/OCA/product-attribute/actions/workflows/test.yml/badge.svg?branch=14.0)](https://github.com/OCA/product-attribute/actions/workflows/test.yml?query=branch%3A14.0)
 [![codecov](https://codecov.io/gh/OCA/product-attribute/branch/14.0/graph/badge.svg)](https://codecov.io/gh/OCA/product-attribute)
 [![Translation Status](https://translation.odoo-community.org/widgets/product-attribute-14-0/-/svg-badge.svg)](https://translation.odoo-community.org/engage/product-attribute-14-0/?utm_source=widget)
 
@@ -59,9 +60,11 @@ addon | version | maintainers | summary
 [product_pricelist_assortment](product_pricelist_assortment/) | 14.0.1.0.1 |  | Product assortment and pricelist
 [product_pricelist_button_box](product_pricelist_button_box/) | 14.0.1.0.1 | [![rousseldenis](https://github.com/rousseldenis.png?size=30px)](https://github.com/rousseldenis) | Allows to define a button_box section on pricelist form
 [product_pricelist_direct_print](product_pricelist_direct_print/) | 14.0.1.1.1 |  | Print price list from menu option, product templates, products variants or price lists
+[product_pricelist_direct_print_company_group](product_pricelist_direct_print_company_group/) | 14.0.1.0.0 |  | Print Pricelist items using the company group model
 [product_pricelist_revision](product_pricelist_revision/) | 14.0.1.0.2 |  | Product Pricelist Revision
 [product_pricelist_supplierinfo](product_pricelist_supplierinfo/) | 14.0.1.0.3 |  | Allows to create priceslists based on supplier info
 [product_profile](product_profile/) | 14.0.1.0.1 | [![bealdav](https://github.com/bealdav.png?size=30px)](https://github.com/bealdav) [![sebastienbeau](https://github.com/sebastienbeau.png?size=30px)](https://github.com/sebastienbeau) [![kevinkhao](https://github.com/kevinkhao.png?size=30px)](https://github.com/kevinkhao) | Allow to configure a product in 1 click
+[product_restricted_type](product_restricted_type/) | 14.0.1.0.1 |  | Product Restricted Type
 [product_sale_manufactured_for](product_sale_manufactured_for/) | 14.0.1.0.0 |  | Allows to indicate in products that they were made specifically for some customers.
 [product_seasonality](product_seasonality/) | 14.0.1.2.1 |  | Define rules for products' seasonal availability
 [product_secondary_unit](product_secondary_unit/) | 14.0.1.0.3 | [![sergio-teruel](https://github.com/sergio-teruel.png?size=30px)](https://github.com/sergio-teruel) | Set a secondary unit per product
@@ -71,16 +74,17 @@ addon | version | maintainers | summary
 [product_state_history](product_state_history/) | 14.0.1.0.2 | [![rousseldenis](https://github.com/rousseldenis.png?size=30px)](https://github.com/rousseldenis) | Allows to store product state history for reporting purpose
 [product_status](product_status/) | 14.0.1.0.2 |  | Product Status Computed From Fields
 [product_stock_state](product_stock_state/) | 14.0.1.0.0 | [![sebastienbeau](https://github.com/sebastienbeau.png?size=30px)](https://github.com/sebastienbeau) [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) [![kevinkhao](https://github.com/kevinkhao.png?size=30px)](https://github.com/kevinkhao) | Compute the state of a product's stockthe stock level and sale_ok field
-[product_supplierinfo_for_customer](product_supplierinfo_for_customer/) | 14.0.1.2.2 |  | Allows to define prices for customers in the products
+[product_supplierinfo_for_customer](product_supplierinfo_for_customer/) | 14.0.1.3.0 |  | Allows to define prices for customers in the products
 [product_supplierinfo_group](product_supplierinfo_group/) | 14.0.2.0.1 |  | Product Supplierinfo Group
 [product_supplierinfo_revision](product_supplierinfo_revision/) | 14.0.1.0.0 |  | Product Supplierinfo Revision
+[product_supplierinfo_stock_picking_type](product_supplierinfo_stock_picking_type/) | 14.0.1.0.0 | [![victoralmau](https://github.com/victoralmau.png?size=30px)](https://github.com/victoralmau) | Product supplierinfo stock picking type
 [product_template_tags](product_template_tags/) | 14.0.1.2.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) [![ivantodorovich](https://github.com/ivantodorovich.png?size=30px)](https://github.com/ivantodorovich) | This addon allow to add tags on products
 [product_template_tags_code](product_template_tags_code/) | 14.0.1.0.1 |  | This addon allow to add code on products tags
 [product_tier_validation](product_tier_validation/) | 14.0.2.0.1 | [![dreispt](https://github.com/dreispt.png?size=30px)](https://github.com/dreispt) | Support a tier validation process for Products
 [product_total_weight_from_packaging](product_total_weight_from_packaging/) | 14.0.1.1.1 |  | Compute estimated weight based on product's packaging weights
 [product_uom_updatable](product_uom_updatable/) | 14.0.1.0.1 |  | allows products uom to be modified after be used in a stock picking if the product uom is of the same category
 [product_variant_attribute_name_manager](product_variant_attribute_name_manager/) | 14.0.1.0.0 | [![oriolvforgeflow](https://github.com/oriolvforgeflow.png?size=30px)](https://github.com/oriolvforgeflow) | Manage how to display the attributes on the product variant name.
-[product_video_link](product_video_link/) | 14.0.1.0.1 |  | Link Video on product and category
+[product_video_link](product_video_link/) | 14.0.1.0.2 |  | Link Video on product and category
 [product_weight](product_weight/) | 14.0.1.0.1 |  | Allows to calculate products weight from its components.
 [product_weight_logistics_uom](product_weight_logistics_uom/) | 14.0.1.0.0 | [![hparfr](https://github.com/hparfr.png?size=30px)](https://github.com/hparfr) | Glue module for product_weight and product_logistics_uom
 [purchase_product_template_tags](purchase_product_template_tags/) | 14.0.1.1.0 | [![ivantodorovich](https://github.com/ivantodorovich.png?size=30px)](https://github.com/ivantodorovich) | Show product tags menu in Purchase app
