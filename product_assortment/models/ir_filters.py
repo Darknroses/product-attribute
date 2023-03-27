@@ -32,8 +32,8 @@ class IrFilters(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
-        self._update_assortment_default_values(vals_list=vals_list)
-        return super().create(vals_list=vals_list)
+        self._update_assortment_default_values(vals_list)
+        return super().create(vals_list)
 
     partner_ids = fields.Many2many(
         comodel_name="res.partner",
