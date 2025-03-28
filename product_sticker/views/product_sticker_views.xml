@@ -24,6 +24,11 @@
                                 class="h2 mb-5"
                             />
                             <field
+                                name="available_model_ids"
+                                options="{'no_create': True}"
+                                widget="many2many_tags"
+                            />
+                            <field
                                 name="company_id"
                                 options="{'no_create': True}"
                                 groups="base.group_multi_company"
@@ -42,6 +47,7 @@
                                 options="{'no_create': True}"
                                 groups="product.group_product_variant"
                             />
+                            <field name="image_size" />
                             <field name="show_sticker_note" widget="boolean_toggle" />
                             <field
                                 name="note"
@@ -73,6 +79,7 @@
             <tree multi_edit="1">
                 <field name="sequence" widget="handle" />
                 <field name="name" />
+                <field name="available_model_ids" widget="many2many_tags" />
                 <field name="product_category_id" />
                 <field
                     name="product_attribute_id"
@@ -82,6 +89,7 @@
                     name="product_attribute_value_id"
                     groups="product.group_product_variant"
                 />
+                <field name="image_size" optional="hide" />
                 <field
                     name="company_id"
                     groups="base.group_multi_company"
@@ -107,6 +115,7 @@
                 <field name="image_1920" />
                 <field name="product_attribute_id" />
                 <field name="product_attribute_value_id" />
+                <field name="available_model_ids" />
                 <field name="sequence" widget="handle" />
                 <field name="company_id" />
                 <field name="show_sticker_note" />
@@ -169,6 +178,7 @@
                                         <field name="name" class="o_text_overflow" />
                                     </div>
                                     <div class="o_kanban_record_body">
+                                        <field name="available_model_ids" />
                                         <div
                                             t-if="record.product_category_id.value"
                                             class="d-block"
@@ -188,7 +198,6 @@
                                             > / </span>
                                             <field name="product_attribute_value_id" />
                                         </div>
-
                                     </div>
                                     <div class="o_kanban_record_bottom">
                                         <div class="oe_kanban_bottom_left">
@@ -215,7 +224,9 @@
         <field name="arch" type="xml">
             <search string="Product Stickers">
                 <field name="name" />
+                <field name="available_model_ids" />
                 <field name="product_category_id" />
+                <field name="image_size" />
                 <field
                     name="product_attribute_id"
                     groups="product.group_product_variant"
@@ -251,6 +262,11 @@
                 />
                 <group>
                     <filter
+                        name="grp_available_models"
+                        string="Available Models"
+                        context="{'group_by': 'available_model_ids'}"
+                    />
+                    <filter
                         name="grp_company"
                         string="Company"
                         context="{'group_by': 'company_id'}"
@@ -276,4 +292,29 @@
             </search>
         </field>
     </record>
+
+    <template id="report_sticker_template">
+        <!-- Required parameters: stickers, position, extra_classes -->
+        <t t-if="stickers">
+            <div t-attf-class="col-12 #{extra_classes}">
+                <t t-foreach="stickers" t-as="sticker">
+                    <div
+                        class="col-auto d-inline-block text-center align-top p-0 mt-3 mr-1"
+                    >
+                        <img
+                            t-att-src="image_data_uri(sticker.get_image())"
+                            t-att-alt="sticker.name"
+                            class="m-auto d-block"
+                        />
+                        <span
+                            t-if="sticker.show_sticker_note and sticker.note"
+                            t-esc="sticker.note"
+                            class="text-muted small"
+                            style="white-space: pre;"
+                        />
+                    </div>
+                </t>
+            </div>
+        </t>
+    </template>
 </odoo>
